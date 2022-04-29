@@ -11,12 +11,34 @@
     
 //     document.getElementById("wallet").innerText=total
 //     }
-let data = JSON.parse(localStorage.getItem("movies"));
-console.log(data)
-let total=localStorage.getItem("amount");
-document.getElementById("wallet").innerText=total;
-if(total<100){
-    alert("Insufficient Balance")
-}else{
-    //data.map
+let amount = JSON.parse(localStorage.getItem('amount')) || 0
+document.getElementById('wallet').innerHTML = amount
+
+let movie = JSON.parse(localStorage.getItem('movie')) || []
+let movie_div =  document.createElement('div')
+movie_div.id='movie_div'
+let title = document.createElement('h1')
+title.innerText = movie[0].Title
+let poster = document.createElement('img')
+poster.src=movie[0].Poster
+
+movie_div.append(title,poster)
+document.querySelector('#movie').append(movie_div)
+
+
+function confirm(){
+    let number_of_seats = document.querySelector('#number_of_seats').value
+    let cost = eval(number_of_seats*100)
+    if(amount>=cost){
+        amount = eval(amount-cost)
+        localStorage.setItem('amount',JSON.stringify(amount));
+        document.getElementById('wallet').innerHTML = amount
+        alert("Booking successfull")
+        document.getElementById('user_name').value = null
+        document.getElementById('number_of_seats').value = null
+        localStorage.clear()
+    }
+    else{
+        alert("Insufficient Balance!")
+    }
 }

@@ -10,17 +10,14 @@
         text-decoration: none;
         color: black;
       }
-      #add-money{
-        display: flex;
-        justify-self: center;
-        flex-direction: row; 
-        margin-left: 200px;
-      }
-
       #navbar{
-        display: flex;
-        justify-content: space-between;
-      }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#add-money{
+    text-align: center;
+}
     </style>
   </head>
   <body>
@@ -32,9 +29,9 @@
     </div>
     <div id="add-money">
       <!-- input box for accepting money with id as "amount" -->
-      <input type="text" id="amount" placeholder="Enter Amount">
+      <input type="number" id="amount" placeholder="Enter Amount">
       <!-- button with id as "add_to_wallet" -->
-      <button id="add_to_wallet" onclick="addwallet()">Add To Wallet</button>
+      <button id="add_to_wallet">Add To Wallet</button>
       <!-- button with id as "book_movies" to go to movies.html -->
       <button id="book_movies"><a href="movies.html">Book Movies</a></button>
     </div>

@@ -1,12 +1,19 @@
 // Store the wallet amount to your local storage with key "amount"
 
-function addwallet(){
-let a=document.getElementById("amount").value;
-let amountArr=localStorage.getItem("amount")||0;
+let amount = JSON.parse(localStorage.getItem('amount')) || 0
+document.getElementById('wallet').innerHTML = amount
 
 
-let total=Number(amountArr)+Number(a);
-localStorage.setItem("amount",JSON.stringify(total));
+document.getElementById('add_to_wallet').addEventListener('click',()=>{
+    let n = document.getElementById('amount').value;
+    amount=eval(Number(amount)+Number(n));
+    document.getElementById('wallet').innerHTML = amount
+    localStorage.setItem('amount',JSON.stringify(amount));
+    document.getElementById('amount').value = null
+})
 
-document.getElementById("wallet").innerText=total
-}
+document.getElementById('book_movies').addEventListener('click',()=>{
+    window.location.href="movies.html"
+})
+
+

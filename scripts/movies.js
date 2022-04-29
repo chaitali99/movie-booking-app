@@ -5,7 +5,6 @@
 
 //const url =`https://www.omdbapi.com/?s=${}&apikey=5e67da6`;
 
-let movieArr=JSON.parse(localStorage.getItem("movie"))||[]
 
 let id;
 
@@ -44,11 +43,7 @@ function appendMovies(data){
         btn.innerText="Book Now";
 
         btn.setAttribute("class","book_now");
-        let a=document.createElement("a");
-        a.style.href="scripts/checkout.html";
-        a.style.textDecoration="none";
-        a.style.color="black";
-        btn.append(a);
+        
         //btn.style.href="scripts/checkout.html"
         btn.addEventListener("click",function(){
             bookNow(ele);
@@ -63,9 +58,11 @@ function appendMovies(data){
 
 function bookNow(ele){
     console.log(ele)
+    let movieArr=JSON.parse(localStorage.getItem("movie"))||[]
     movieArr.push(ele);
     localStorage.setItem("movie",JSON.stringify(movieArr));
-    
+    window.location.href="checkout.html"
+
     
 }
 
